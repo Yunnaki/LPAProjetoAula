@@ -1,11 +1,17 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from Code.Entity import Entity
+from Code.const import WIN_WIDTH, ENTITY_SPEED
 
-from Entity import Entity
 
-class Brackground(Entity):
-    def __init__(self):
-        pass
+class Background(Entity):
+    def __init__(self, name: str, position: tuple):
+        super().__init__(name, position)
 
-    def move(self, ):
-        pass
+    def move(self):
+        self.rect.centerx -= ENTITY_SPEED[self.name]
+        if self.rect.right <= 0:
+            self.rect.left = WIN_WIDTH
+
+
+
